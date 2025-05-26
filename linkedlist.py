@@ -140,7 +140,35 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
+    
+class solution(object):
+    def MergeTwoSortedLists(self, list1, list2):
+        dummy = Node(-1)
+        temp = dummy
+        
+        temp1 = list1.head
+        temp2 = list2.head
 
+        while temp1 != None and temp2 != None:
+            if temp1.value >= temp2.value:
+                temp.next = temp1
+                temp1 = temp1.next
+            else:
+                temp.next = temp2
+                temp2= temp2.next
+            temp = temp.next
+        temp.next = temp1 if temp1 else temp2
+
+        ptemp = temp
+        while ptemp is not None:
+            print(ptemp.value)
+            ptemp = ptemp.next
+
+        return temp.next
+
+
+
+"""
 llist = LinkedList(4)
 llist.append(3)
 llist.append(2)
@@ -178,3 +206,21 @@ print("------------------\n")
 llist.reverse()
 llist.print_list()
 print("------------------\n")
+"""
+
+# LeetCode Merge Two Sorted Lists
+list1 = LinkedList(1)
+list1.append(2)
+list1.append(4)
+list1.print_list()
+
+list2 = LinkedList(1)
+list2.append(3)
+list2.append(4)
+
+list2.print_list()
+print()
+
+answer = solution()
+answer.MergeTwoSortedLists(list1, list2)
+
